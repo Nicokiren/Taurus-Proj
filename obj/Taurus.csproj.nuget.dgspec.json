@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BOXGA\\OneDrive\\Área de Trabalho\\estudo\\TAURUS\\Taurus\\Taurus.csproj": {}
+    "C:\\Taurus-Proj\\Taurus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BOXGA\\OneDrive\\Área de Trabalho\\estudo\\TAURUS\\Taurus\\Taurus.csproj": {
+    "C:\\Taurus-Proj\\Taurus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BOXGA\\OneDrive\\Área de Trabalho\\estudo\\TAURUS\\Taurus\\Taurus.csproj",
+        "projectUniqueName": "C:\\Taurus-Proj\\Taurus.csproj",
         "projectName": "Taurus",
-        "projectPath": "C:\\Users\\BOXGA\\OneDrive\\Área de Trabalho\\estudo\\TAURUS\\Taurus\\Taurus.csproj",
-        "packagesPath": "C:\\Users\\BOXGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BOXGA\\OneDrive\\Área de Trabalho\\estudo\\TAURUS\\Taurus\\obj\\",
+        "projectPath": "C:\\Taurus-Proj\\Taurus.csproj",
+        "packagesPath": "C:\\Users\\victo\\.nuget\\packages\\",
+        "outputPath": "C:\\Taurus-Proj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\BOXGA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\victo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -47,17 +47,18 @@
               "target": "Package",
               "version": "[8.0.15, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.15, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.3, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.6.2, )"
             }
           },
           "imports": [
