@@ -15,10 +15,8 @@ namespace TaurusApi_Models
 
         public bool Orcamento { get; set; } = false;
 
-        [Required]
         public DateTime Data { get; set; }
         
-        [Required]
         public TimeSpan Hora { get; set; }
     }
 }

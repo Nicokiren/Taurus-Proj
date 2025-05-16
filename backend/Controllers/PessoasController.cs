@@ -12,7 +12,7 @@ namespace TaurusApi_Controllers
         private readonly TaurusContext _context;
 
         public PessoasController(TaurusContext context)
-        {
+        {   
             _context = context;
         }
 
