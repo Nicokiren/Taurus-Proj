@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography, Container, CircularProgress, Alert } from '@mui/material';
-import ServicoCard from './ServicoCard'; 
+import ServicoCard from './ServicoCard';
 
 function ServicosList() {
   const [servicos, setServicos] = useState([]);
@@ -12,13 +12,16 @@ function ServicosList() {
     const fetchServicos = async () => {
       try {
         
-        const response = await fetch('SUA_URL_DO_BACKEND_AQUI/api/Servicos'); 
+        const response = await fetch('http://localhost:5148/api/Servicos'); 
         if (!response.ok) {
-          throw new Error(`Erro HTTP! status: ${response.status}`);
+       
+          const errorText = await response.text();
+          throw new Error(`Erro HTTP! status: ${response.status} - ${errorText}`);
         }
         const data = await response.json();
         setServicos(data);
       } catch (err) {
+        console.error("Erro ao buscar serviços:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -29,9 +32,9 @@ function ServicosList() {
   }, []);
 
   const handleSelectService = (servico) => {
-   
-    alert(`Você selecionou o serviço: ${servico.nome}`);
+    alert(`Você selecionou o serviço: ${servico.id} - Manutenção: ${servico.manutencao ? 'Sim' : 'Não'}`);
     console.log('Serviço selecionado:', servico);
+
   };
 
   if (loading) {
@@ -47,6 +50,9 @@ function ServicosList() {
     return (
       <Container sx={{ mt: 4 }}>
         <Alert severity="error">Erro ao carregar serviços: {error}</Alert>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          Verifique se o seu backend C# está rodando em https://localhost:7070 e se as configurações de CORS estão corretas (veja o Passo 2).
+        </Typography>
       </Container>
     );
   }
@@ -54,7 +60,7 @@ function ServicosList() {
   return (
     <Container sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 4, fontWeight: 'bold', color: 'primary.main' }}>
-        Nossos Serviços
+        Nossos Serviços Disponíveis
       </Typography>
       {servicos.length === 0 ? (
         <Typography variant="h6" align="center" color="text.secondary">
