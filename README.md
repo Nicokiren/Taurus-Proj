@@ -124,4 +124,10 @@ O projeto está dividido em duas pastas principais:
 
 ---
 
-Desenvolvido como parte de um projeto de aprendizado e portfólio.
+
+## 👨‍💻 Desenvolvedores
+
+- **Nicolas Teixeira Jeremias**  
+- **Victor Reis**
+
+---
