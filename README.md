@@ -1,133 +1,124 @@
-# Oficina Taurus - Sistema de Gerenciamento
+Oficina Taurus - Sistema de Gerenciamento
+Bem-vindo ao sistema de gerenciamento da Oficina Taurus! Este é um projeto Full Stack desenvolvido para demonstrar habilidades em desenvolvimento web, consistindo em um backend em .NET 8 com Entity Framework Core e um frontend em React.
 
-Bem-vindo ao sistema de gerenciamento da Oficina Taurus! Este é um projeto Full Stack desenvolvido para praticar e demonstrar habilidades em desenvolvimento web, consistindo em um backend em .NET 8 com Entity Framework Core e um frontend em React.
+📜 Sobre o Projeto
+A Oficina Taurus é uma aplicação para o gerenciamento de uma oficina mecânica, permitindo o controle de clientes, serviços e ordens de serviço (tickets).
 
-## Sobre o Projeto
+Funcionalidades
+Gestão de Pessoas/Clientes:
+Cadastro de novos clientes com nome, telefone e endereço.
+Listagem de todos os clientes cadastrados.
+Gestão de Serviços:
+Cadastro de pacotes de serviços (Manutenção, Limpeza, Troca de Óleo, Orçamento) com data e hora para agendamento.
+Listagem de todos os pacotes de serviços agendados.
+Gestão de Tickets:
+Criação de "ordens de serviço" (tickets) vinculando um cliente a um pacote de serviços agendado.
+Listagem de todos os tickets, exibindo detalhes do cliente e dos serviços.
+Navegação:
+Interface com navegação clara entre as seções de Pessoas, Serviços e Tickets através de um menu principal.
+🛠️ Tecnologias Utilizadas
+O projeto foi construído com as seguintes tecnologias:
 
-A Oficina Taurus é uma aplicação que permite gerenciar:
-* **Pessoas/Clientes:** Cadastro de clientes da oficina.
-* **Serviços:** Cadastro de pacotes de serviços oferecidos, com data e hora para agendamento.
-* **Tickets:** Criação de "ordens de serviço" vinculando um cliente a um pacote de serviços agendado.
+Backend
+.NET 8: Plataforma de desenvolvimento para a construção da API.
+ASP.NET Core: Framework para a criação da API RESTful.
+Entity Framework Core 8: Mapeador objeto-relacional (ORM) para interação com o banco de dados.
+MySQL: Banco de dados relacional utilizado para persistir os dados.
+CORS: Configurado para permitir requisições do frontend React.
+Frontend
+React 19: Biblioteca JavaScript para a construção da interface de usuário.
+React Router DOM: Para gerenciamento de rotas e navegação na aplicação de página única (SPA).
+Axios: Cliente HTTP para realizar chamadas à API do backend a partir do frontend.
+CSS: Para estilização básica e layout dos componentes.
+📂 Estrutura do Projeto
+O repositório está organizado em duas pastas principais:
 
-## Tecnologias Utilizadas
+backend/: Contém a solução .NET com a API, incluindo Controllers, Models e configuração do Entity Framework.
+taurus-frontend/: Contém a aplicação React, criada com create-react-app, incluindo todos os componentes, estilos e lógica de comunicação com a API.
+📋 Pré-requisitos
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-### Backend
-* **.NET 8:** Plataforma de desenvolvimento.
-* **ASP.NET Core:** Para construção da API RESTful.
-* **Entity Framework Core 8:** ORM para interação com o banco de dados.
-* **MySQL:** Banco de dados relacional utilizado.
-* **Controllers:** Para gerenciar as requisições HTTP para Pessoas, Serviços e Tickets.
+Backend:
+.NET SDK 8.0 ou superior.
+Um servidor MySQL em execução.
+Frontend:
+Node.js e npm (o npm é instalado junto com o Node.js).
+🚀 Configuração e Execução
+Siga os passos abaixo para configurar e executar o projeto localmente.
 
-### Frontend
-* **React:** Biblioteca JavaScript para construção da interface de usuário.
-* **React Router DOM:** Para gerenciamento de rotas e navegação na aplicação.
-* **Axios:** Cliente HTTP para realizar chamadas à API do backend.
-* **CSS:** Para estilização básica dos componentes.
+1. Backend (.NET API)
+Navegue até a pasta do backend:
 
-## Estrutura do Projeto
+Bash
 
-O projeto está dividido em duas pastas principais:
+cd backend
+Configure a String de Conexão:
 
-* `backend/`: Contém a solução .NET com a API.
-* `taurus-frontend/`: Contém a aplicação React.
+Abra o arquivo backend/appsettings.json.
+Localize a seção ConnectionStrings e ajuste a DefaultConnection para apontar para o seu servidor MySQL. Modifique server, port, database, user e password conforme sua configuração.
+JSON
 
-## Pré-requisitos
+"ConnectionStrings": {
+  "DefaultConnection": "server=localhost;port=3306;database=taurusdb;user=seu_usuario_mysql;password=sua_senha_mysql;"
+}
+Aplique as Migrações do Banco de Dados:
 
-### Backend
-* [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) ou superior.
-* Um servidor MySQL em execução.
+Este comando criará o banco de dados e as tabelas (Pessoas, Servicos, Tickets) com base nos modelos definidos no projeto.
+No terminal, dentro da pasta backend/, execute:
+Bash
 
-### Frontend
-* [Node.js e npm](https://nodejs.org/) (npm geralmente vem com Node.js).
+dotnet ef database update
+Observação: Caso não tenha o dotnet-ef instalado, execute dotnet tool install --global dotnet-ef primeiro.
 
-## Configuração e Execução
+Execute o Backend:
 
-### 1. Backend (.NET API)
+Ainda na pasta backend/, execute o comando:
+Bash
 
-1.  **Clone o repositório (se ainda não o fez):**
-    ```bash
-    git clone <URL_DO_SEU_REPOSITORIO_GIT>
-    cd <NOME_DA_PASTA_RAIZ_DO_PROJETO>/backend
-    ```
+dotnet run
+A API estará disponível em http://localhost:5148, conforme definido no arquivo Properties/launchSettings.json.
+2. Frontend (React App)
+Navegue até a pasta do frontend:
 
-2.  **Configure a String de Conexão com o Banco de Dados:**
-    * Abra o arquivo `backend/appsettings.json`.
-    * Modifique a `DefaultConnection` em `ConnectionStrings` para apontar para o seu servidor MySQL, atualizando `server`, `port`, `database`, `user`, e `password` conforme necessário.
-    ```json
-    "ConnectionStrings": {
-      "DefaultConnection": "server=localhost;port=3306;database=taurusdb;user=seu_usuario_mysql;password=sua_senha_mysql;"
-    }
-    ```
+Em um novo terminal, navegue até a pasta do frontend:
+Bash
 
-3.  **Aplique as Migrações (Criação do Banco de Dados e Tabelas):**
-    * No terminal, dentro da pasta `backend/`, execute:
-        ```bash
-        dotnet tool install --global dotnet-ef # Se ainda não tiver o EF Core tools instalado
-        dotnet ef database update
-        ```
-    Isso criará o banco de dados `taurusdb` (ou o nome que você definiu) e as tabelas `Pessoas`, `Servicos`, e `Tickets`.
+cd taurus-frontend
+Instale as Dependências:
 
-4.  **Execute o Backend:**
-    * Ainda na pasta `backend/`, execute:
-        ```bash
-        dotnet run
-        ```
-    * Por padrão (conforme `Properties/launchSettings.json`), a API estará disponível em `http://localhost:5148` e `https://localhost:7070`.
+Este comando instalará todas as bibliotecas necessárias para o frontend, como React, Axios e React Router.
+Bash
 
-### 2. Frontend (React App)
+npm install
+Execute o Frontend:
 
-1.  **Navegue até a pasta do frontend:**
-    * Em um **novo terminal**, vá para a pasta `taurus-frontend/`:
-        ```bash
-        cd ../taurus-frontend
-        ```
-        (Se você estiver na pasta `backend`, use `cd ..` para subir um nível e depois `cd taurus-frontend`)
+Este comando iniciará o servidor de desenvolvimento do React.
+Bash
 
-2.  **Instale as Dependências:**
-    ```bash
-    npm install
-    ```
+npm start
+A aplicação será aberta automaticamente no seu navegador, no endereço http://localhost:3000.
+Importante: O backend precisa estar em execução para que o frontend funcione corretamente, pois ele faz chamadas para a API em http://localhost:5148/api.
+🌐 Endpoints da API
+A API do backend expõe os seguintes endpoints principais para gerenciar os recursos:
 
-3.  **Verifique a URL da API (opcional):**
-    * O frontend está configurado para se comunicar com o backend em `http://localhost:5148/api` (definido em `taurus-frontend/src/api.js`). Se o seu backend estiver rodando em uma porta diferente, ajuste este arquivo.
+Método	Endpoint	Descrição
+GET	/api/Pessoas	Retorna a lista de todas as pessoas.
+POST	/api/Pessoas	Cria uma nova pessoa.
+GET	/api/Servicos	Retorna a lista de todos os pacotes de serviço.
+POST	/api/Servicos	Cria um novo pacote de serviço agendado.
+GET	/api/Tickets	Retorna a lista de todos os tickets criados.
+POST	/api/Tickets	Cria um novo ticket associando uma pessoa a um serviço.
 
-4.  **Execute o Frontend:**
-    ```bash
-    npm start
-    ```
-    * Isso deve abrir a aplicação no seu navegador, geralmente em `http://localhost:3000`.
-    * O backend deve estar rodando para que o frontend funcione corretamente.
+Exportar para as Planilhas
+(Foram omitidos os endpoints de GET (por id), PUT e DELETE para brevidade)
 
-## Funcionalidades Implementadas
-
-* **Pessoas:**
-    * Listagem de todas as pessoas.
-    * Cadastro de novas pessoas (Nome, Telefone, Endereço).
-* **Serviços:**
-    * Listagem de todos os pacotes de serviços agendados.
-    * Cadastro de novos pacotes de serviços (Manutenção, Limpeza, Troca de Óleo, Orçamento) com Data e Hora.
-* **Tickets:**
-    * Listagem de todos os tickets criados.
-    * Criação de novos tickets selecionando uma Pessoa e um Pacote de Serviço previamente cadastrados.
-* **Navegação:**
-    * Menu de navegação para alternar entre as seções de Pessoas, Serviços e Tickets.
-
-## Possíveis Melhorias Futuras
-
-* Implementar funcionalidades de Edição e Exclusão para Pessoas, Serviços e Tickets.
-* Melhorar a interface do usuário (UI) e experiência do usuário (UX) com estilização mais avançada.
-* Adicionar validação de formulários mais robusta no frontend.
-* Implementar feedback visual para o usuário (mensagens de sucesso/erro).
-* Adicionar testes unitários e de integração.
-* Paginação para listas longas.
-* Funcionalidade de busca/filtros nas listas.
-
----
-
-
-## 👨‍💻 Desenvolvedores
-
-- **Nicolas Teixeira Jeremias**  
-- **Victor Reis**
-
----
+🔮 Possíveis Melhorias Futuras
+Implementar funcionalidades de Edição e Exclusão para Pessoas, Serviços e Tickets.
+Melhorar a interface do usuário (UI) e a experiência do usuário (UX).
+Adicionar validação de formulários mais robusta no frontend.
+Implementar feedback visual para o usuário (mensagens de sucesso/erro).
+Adicionar testes unitários e de integração.
+Implementar paginação e filtros para as listas.
+👨‍💻 Autores
+Nicolas Teixeira Jeremias
+Victor Reis
