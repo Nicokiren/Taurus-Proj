@@ -1,124 +1,132 @@
 Oficina Taurus - Sistema de Gerenciamento
-Bem-vindo ao sistema de gerenciamento da Oficina Taurus! Este é um projeto Full Stack desenvolvido para demonstrar habilidades em desenvolvimento web, consistindo em um backend em .NET 8 com Entity Framework Core e um frontend em React.
+Uma aplicação Full Stack para gerenciamento de uma oficina, construída com .NET 8 e React 19.
 
-📜 Sobre o Projeto
-A Oficina Taurus é uma aplicação para o gerenciamento de uma oficina mecânica, permitindo o controle de clientes, serviços e ordens de serviço (tickets).
+&lt;br>
 
+📌 Índice
+Sobre o Projeto
 Funcionalidades
-Gestão de Pessoas/Clientes:
-Cadastro de novos clientes com nome, telefone e endereço.
-Listagem de todos os clientes cadastrados.
-Gestão de Serviços:
-Cadastro de pacotes de serviços (Manutenção, Limpeza, Troca de Óleo, Orçamento) com data e hora para agendamento.
-Listagem de todos os pacotes de serviços agendados.
-Gestão de Tickets:
-Criação de "ordens de serviço" (tickets) vinculando um cliente a um pacote de serviços agendado.
-Listagem de todos os tickets, exibindo detalhes do cliente e dos serviços.
-Navegação:
-Interface com navegação clara entre as seções de Pessoas, Serviços e Tickets através de um menu principal.
-🛠️ Tecnologias Utilizadas
-O projeto foi construído com as seguintes tecnologias:
+Tecnologias Utilizadas
+Estrutura do Projeto
+Pré-requisitos
+Como Executar
+Endpoints da API
+Deploy
+Contribuindo
+Autores
+&lt;br>
 
-Backend
-.NET 8: Plataforma de desenvolvimento para a construção da API.
-ASP.NET Core: Framework para a criação da API RESTful.
-Entity Framework Core 8: Mapeador objeto-relacional (ORM) para interação com o banco de dados.
-MySQL: Banco de dados relacional utilizado para persistir os dados.
-CORS: Configurado para permitir requisições do frontend React.
-Frontend
-React 19: Biblioteca JavaScript para a construção da interface de usuário.
-React Router DOM: Para gerenciamento de rotas e navegação na aplicação de página única (SPA).
-Axios: Cliente HTTP para realizar chamadas à API do backend a partir do frontend.
-CSS: Para estilização básica e layout dos componentes.
-📂 Estrutura do Projeto
-O repositório está organizado em duas pastas principais:
+📝 Sobre o Projeto
+A Oficina Taurus é um sistema web criado para simplificar o dia a dia de uma oficina mecânica. Ele permite o cadastro de clientes, a criação de pacotes de serviços com agendamento e a emissão de tickets (ordens de serviço), conectando clientes a seus respectivos agendamentos de forma organizada e eficiente.
 
-backend/: Contém a solução .NET com a API, incluindo Controllers, Models e configuração do Entity Framework.
-taurus-frontend/: Contém a aplicação React, criada com create-react-app, incluindo todos os componentes, estilos e lógica de comunicação com a API.
-📋 Pré-requisitos
-Antes de começar, certifique-se de ter instalado em sua máquina:
+✨ Funcionalidades
+👤 Gestão de Clientes:
+Cadastrar e listar clientes.
+🛠️ Gestão de Serviços:
+Criar pacotes de serviços (ex: Manutenção, Limpeza, Troca de Óleo).
+Agendar data e hora para cada pacote.
+🎫 Gestão de Tickets:
+Gerar tickets vinculando um cliente a um serviço agendado.
+Visualizar o histórico de todos os tickets.
+🚀 Tecnologias Utilizadas
+Este projeto foi desenvolvido com uma stack moderna e robusta:
 
-Backend:
-.NET SDK 8.0 ou superior.
-Um servidor MySQL em execução.
-Frontend:
-Node.js e npm (o npm é instalado junto com o Node.js).
-🚀 Configuração e Execução
-Siga os passos abaixo para configurar e executar o projeto localmente.
-
-1. Backend (.NET API)
-Navegue até a pasta do backend:
-
-Bash
-
-cd backend
-Configure a String de Conexão:
-
-Abra o arquivo backend/appsettings.json.
-Localize a seção ConnectionStrings e ajuste a DefaultConnection para apontar para o seu servidor MySQL. Modifique server, port, database, user e password conforme sua configuração.
-JSON
-
-"ConnectionStrings": {
-  "DefaultConnection": "server=localhost;port=3306;database=taurusdb;user=seu_usuario_mysql;password=sua_senha_mysql;"
-}
-Aplique as Migrações do Banco de Dados:
-
-Este comando criará o banco de dados e as tabelas (Pessoas, Servicos, Tickets) com base nos modelos definidos no projeto.
-No terminal, dentro da pasta backend/, execute:
-Bash
-
-dotnet ef database update
-Observação: Caso não tenha o dotnet-ef instalado, execute dotnet tool install --global dotnet-ef primeiro.
-
-Execute o Backend:
-
-Ainda na pasta backend/, execute o comando:
-Bash
-
-dotnet run
-A API estará disponível em http://localhost:5148, conforme definido no arquivo Properties/launchSettings.json.
-2. Frontend (React App)
-Navegue até a pasta do frontend:
-
-Em um novo terminal, navegue até a pasta do frontend:
-Bash
-
-cd taurus-frontend
-Instale as Dependências:
-
-Este comando instalará todas as bibliotecas necessárias para o frontend, como React, Axios e React Router.
-Bash
-
-npm install
-Execute o Frontend:
-
-Este comando iniciará o servidor de desenvolvimento do React.
-Bash
-
-npm start
-A aplicação será aberta automaticamente no seu navegador, no endereço http://localhost:3000.
-Importante: O backend precisa estar em execução para que o frontend funcione corretamente, pois ele faz chamadas para a API em http://localhost:5148/api.
-🌐 Endpoints da API
-A API do backend expõe os seguintes endpoints principais para gerenciar os recursos:
-
-Método	Endpoint	Descrição
-GET	/api/Pessoas	Retorna a lista de todas as pessoas.
-POST	/api/Pessoas	Cria uma nova pessoa.
-GET	/api/Servicos	Retorna a lista de todos os pacotes de serviço.
-POST	/api/Servicos	Cria um novo pacote de serviço agendado.
-GET	/api/Tickets	Retorna a lista de todos os tickets criados.
-POST	/api/Tickets	Cria um novo ticket associando uma pessoa a um serviço.
+Categoria	Tecnologia
+Backend	.NET 8, ASP.NET Core, Entity Framework Core 8, MySQL
+Frontend	React 19, React Router DOM, Axios
+Estilos	CSS puro
 
 Exportar para as Planilhas
-(Foram omitidos os endpoints de GET (por id), PUT e DELETE para brevidade)
+📂 Estrutura do Projeto
+O repositório está organizado de forma clara para separar as responsabilidades do backend e do frontend:
 
-🔮 Possíveis Melhorias Futuras
-Implementar funcionalidades de Edição e Exclusão para Pessoas, Serviços e Tickets.
-Melhorar a interface do usuário (UI) e a experiência do usuário (UX).
-Adicionar validação de formulários mais robusta no frontend.
-Implementar feedback visual para o usuário (mensagens de sucesso/erro).
-Adicionar testes unitários e de integração.
-Implementar paginação e filtros para as listas.
+Taurus-Proj-XABLAU/
+├── backend/            # Contém a API em .NET 8
+│   ├── Controllers/
+│   ├── Data/
+│   ├── Migrations/
+│   ├── Models/
+│   └── ...
+└── taurus-frontend/    # Contém a aplicação em React
+    ├── public/
+    ├── src/
+    │   ├── components/
+    │   └── ...
+    └── package.json
+📋 Pré-requisitos
+Antes de começar, garanta que você tenha as seguintes ferramentas instaladas:
+
+.NET SDK 8.0+
+Node.js e npm
+[link suspeito removido]
+⚡ Como Executar
+Siga os passos abaixo para rodar o projeto em seu ambiente local.
+
+1. Backend (API .NET)
+Bash
+
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/Taurus-Proj-XABLAU.git
+
+# 2. Navegue para a pasta do backend
+cd Taurus-Proj-XABLAU/backend
+
+# 3. Configure a string de conexão
+#    Abra o arquivo 'appsettings.json' e ajuste os dados do seu MySQL.
+#    "DefaultConnection": "server=localhost;port=3306;database=taurusdb;user=root;password=sua_senha;"
+
+# 4. Aplique as migrações para criar o banco de dados e as tabelas
+dotnet ef database update
+
+# 5. Execute a API
+dotnet run
+A API estará em execução em http://localhost:5148.
+
+2. Frontend (Aplicação React)
+Bash
+
+# 1. Em um novo terminal, navegue para a pasta do frontend
+cd Taurus-Proj-XABLAU/taurus-frontend
+
+# 2. Instale as dependências
+npm install
+
+# 3. Execute a aplicação
+npm start
+A aplicação React estará disponível em http://localhost:3000.
+
+🌐 Endpoints da API
+A API expõe os seguintes endpoints para manipulação dos dados:
+
+Método	Endpoint	Descrição
+GET	/api/Pessoas	Lista todas as pessoas.
+POST	/api/Pessoas	Cadastra uma nova pessoa.
+GET	/api/Servicos	Lista todos os pacotes de serviço.
+POST	/api/Servicos	Cadastra um novo pacote de serviço.
+GET	/api/Tickets	Lista todos os tickets.
+POST	/api/Tickets	Cria um novo ticket.
+
+Exportar para as Planilhas
+☁️ Deploy
+Para fazer o deploy desta aplicação, você precisará hospedar o backend .NET (por exemplo, no Azure App Service, Heroku ou AWS) e o frontend React (por exemplo, na Vercel, Netlify ou GitHub Pages).
+
+Backend: Configure as variáveis de ambiente no serviço de hospedagem para a ConnectionStrings.
+Frontend: Atualize a baseURL no arquivo src/api.js para o endereço da sua API em produção e execute npm run build para gerar os arquivos estáticos.
+🤝 Contribuindo
+Contribuições são o que tornam a comunidade de código aberto um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será muito apreciada.
+
+Faça um Fork do projeto
+Crie uma Branch para sua feature (git checkout -b feature/AmazingFeature)
+Faça um Commit com suas mudanças (git commit -m 'Add some AmazingFeature')
+Faça o Push da sua branch (git push origin feature/AmazingFeature)
+Abra um Pull Request
 👨‍💻 Autores
-Nicolas Teixeira Jeremias
-Victor Reis
+Nicolas Teixeira Jeremias - GitHub * Victor Reis - GitHub ---
+
+Fontes
+
+
+
+
+
+
