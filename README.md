@@ -120,8 +120,9 @@ Crie uma Branch para sua feature (git checkout -b feature/AmazingFeature)
 Faça um Commit com suas mudanças (git commit -m 'Add some AmazingFeature')
 Faça o Push da sua branch (git push origin feature/AmazingFeature)
 Abra um Pull Request
-👨‍💻 Autores
-Nicolas Teixeira Jeremias - GitHub * Victor Reis - GitHub ---
+
+#👨‍💻 Autores
+Nicolas Teixeira Jeremias -  Victor Reis
 
 Fontes
 
